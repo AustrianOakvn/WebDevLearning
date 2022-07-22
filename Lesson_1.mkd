@@ -1,0 +1,16 @@
+
+## Kiến trúc 3 layers
+
+### Presentation layer
+
+Hiển thị view, giao diện, lấy data truyền từ UI về server xử lý
+
+### Business Logic Layer
+
+Xử lý về mặt logic, VD: username là người dùng hay admin
+
+### Data Access Layer
+
+Giao tiếp với database, Query.
+
+### Database

@@ -1,0 +1,13 @@
+## Tạo project theo mô hình MVC (model - view - controller)
+
+### Trong file web.xml để thêm trang dẫn vào sử dụng welcome list file, sau đó tạo 1 file jsp controller tên là index.jsp trong folder webapp
+
+### Khi làm việc với jsp servlet cần có thư viện jsp api maven, servlet api. Thêm vào file pom.xml
+
+### Với controller thì sử dụng annotation Webservlet để không cần mapping với file web.xml. Sử dụng urlPattern để có thể sử dụng nhiều đường dẫn khác nhau
+
+### Jsp là html thuần nhưng nó mạnh bởi có các thư viện đi cùng. 
+#### Thư viện jsp standard tag lib
+
+
+### Chạy: mvn clean install
