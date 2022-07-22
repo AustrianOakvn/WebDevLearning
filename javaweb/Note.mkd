@@ -29,3 +29,6 @@
 #### Check tomcat application manager: http://127.0.0.1:8080/manager/html
 
 #### Command systemctl: sudo systemctl (restart/status/start/stop) tomcat9
+
+
+#### sudo cp target/javaweb.war /var/lib/tomcat9/webapps
