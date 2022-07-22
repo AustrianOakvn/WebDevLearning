@@ -6,8 +6,26 @@
 
 ### Với controller thì sử dụng annotation Webservlet để không cần mapping với file web.xml. Sử dụng urlPattern để có thể sử dụng nhiều đường dẫn khác nhau
 
-### Jsp là html thuần nhưng nó mạnh bởi có các thư viện đi cùng. 
+### Jsp là html thuần nhưng nó mạnh bởi có các thư viện đi cùng.
+
 #### Thư viện jsp standard tag lib
 
-
 ### Chạy: mvn clean install
+
+### Apache Tomcat installation:
+#### Check apache Tomcat package: sudo apt-cache search tomcat
+#### Install apache tomcat: sudo apt install tomcat9 tomcat9-admin
+#### Check port 8080: ss -ltn
+#### Open port for apache tomcat: sudo ufw allow from any to any port 8080 proto tcp
+#### Test working tomcat server: access http://127.0.0.1:8080
+#### Create tomcat user: sudo gedit /etc/tomcat9/tomcat-users.xml
+#### Add new users: <role rolename="admin-gui"/>
+
+<role rolename="manager-gui"/>
+
+<user username="tomcat" password="pass" roles="admin-gui,manager-gui"/>
+
+
+#### Check tomcat application manager: http://127.0.0.1:8080/manager/html
+
+#### Command systemctl: sudo systemctl (restart/status/start/stop) tomcat9
