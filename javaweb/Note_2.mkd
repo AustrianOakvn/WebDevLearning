@@ -1,0 +1,22 @@
+# B2
+
+## Chú ý
+
+Trong jsp không nên viết code java, khi đưa mô hình MVC thì jsp chỉ là để view (dùng thêm bootstrap) html là chính
+
+Servlet là xử lý logic
+
+Model là nơi luân chuyển dữ liệu. Lấy data từ database lên và hiển thị thì phải thông qua model
+
+## Truyền tham số model hiện thị lên jsp
+
+Tạo userModel trong web/HomeController
+Request set attribute "model" bằng userModel
+Gọi ở jsp bằng expression language ${model.property}
+
+## Định nghĩa thư viện jsp dùng chung
+
+Do một số thư viện jsp nếu ta sử dụng lại thì lại phải định nghĩa trong file jsp nên giảm bớt thao tác và định nghĩa folder common trong webapp, trong đó tạo file taglib.jsp và thêm thư viện vào.
+
+Thay vì phải thêm như trước thì ta có thể dùng:
+\<%@include file="/common/taglib.jsp"%>

@@ -1,53 +1,53 @@
-## Tạo project theo mô hình MVC (model - view - controller)
+# Tạo project theo mô hình MVC (model - view - controller)
 
-### 1
+## 1
 
 Trong file web.xml để thêm trang dẫn vào sử dụng welcome list file, sau đó tạo 1 file jsp controller tên là index.jsp trong folder webapp
 
-### 2
+## 2
 
 Khi làm việc với jsp servlet cần có thư viện jsp api maven, servlet api. Thêm vào file pom.xml
 
-### 3
+## 3
 
 Với controller thì sử dụng annotation Webservlet để không cần mapping với file web.xml. Sử dụng urlPattern để có thể sử dụng nhiều đường dẫn khác nhau
 
-### Thư viện đi kèm jsp
+## Thư viện đi kèm jsp
 
 Jsp là html thuần nhưng nó mạnh bởi có các thư viện đi cùng.
 Thư viện jsp standard tag lib
 
-### Chạy
+## Chạy
 
 mvn clean install
 
-### Apache Tomcat installation
+## Apache Tomcat installation
 
-#### Check apache Tomcat package
+### Check apache Tomcat package
 
 sudo apt-cache search tomcat
 
-#### Install apache tomcat
+### Install apache tomcat
 
 sudo apt install tomcat9 tomcat9-admin
 
-#### Check port 8080
+### Check port 8080
 
 ss -ltn
 
-#### Open port for apache tomcat
+### Open port for apache tomcat
 
 sudo ufw allow from any to any port 8080 proto tcp
 
-#### Test working tomcat server
+### Test working tomcat server
 
 Access <http://127.0.0.1:8080>
 
-#### Create tomcat user
+### Create tomcat user
 
 sudo gedit/(vim/nano) /etc/tomcat9/tomcat-users.xml
 
-#### Add new users
+### Add new users
 
 \<role rolename="admin-gui"/>
 
@@ -55,15 +55,15 @@ sudo gedit/(vim/nano) /etc/tomcat9/tomcat-users.xml
 
 \<user username="tomcat" password="pass" roles="admin-gui,manager-gui"/>
 
-#### Check tomcat application manager
+### Check tomcat application manager
 
 Access <http://127.0.0.1:8080/manager/html>
 
-#### Command systemctl
+### Command systemctl
 
 sudo systemctl (restart/status/start/stop) tomcat9
 
-#### To run WAR file
+### To run WAR file
 
 sudo cp target/javaweb.war /var/lib/tomcat9/webapps
 Then access via <http://127.0.0.1:8080/your_app_name>
