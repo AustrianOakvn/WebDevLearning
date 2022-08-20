@@ -15,7 +15,7 @@ Với controller thì sử dụng annotation Webservlet để không cần mappi
 ## Thư viện đi kèm jsp
 
 Jsp là html thuần nhưng nó mạnh bởi có các thư viện đi cùng.
-Thư viện jsp standard tag lib
+Thư viện jsp standard tag lib: là 1 thư viện cung cấp các tag để có thể điều khiển các trang jsp, ví dụ được sử dụng đó là redirect-chuyển hướng trang
 
 ## Chạy
 
