@@ -2,7 +2,7 @@
 
 ## Sitemesh decorator
 
-Phân chia giao diện
+Phân chia giao diện \
 Nhìn xem trong website có những thành phần nào dùng lại
 
 ## Ví dụ trang VNExpress
@@ -62,4 +62,4 @@ Trang danh sách tất cả các bài viết:
 ```
 
 - B3: Tạo 1 folder trong webapp tên là decorators
-- B3: Tạo 1 filter trong file web.xml
+- B4: Tạo 1 filter trong file web.xml
