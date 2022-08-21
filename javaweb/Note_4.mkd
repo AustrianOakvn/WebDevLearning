@@ -1,0 +1,27 @@
+# B4
+
+## Sitemesh decorator
+
+Phân chia giao diện
+
+## Ví dụ trang VNExpress
+
+Trang chủ:
+
+- Có một cây thể hiện thể loại bài viết
+- Có slides chứa các tin tức nổi bật
+- Phía dưới có các tin hot, xem nhiều (đếm số lần bài viết được click)
+
+Trang danh sách tất cả các bài viết:
+
+- Liệt kê bài viết và phân trang (3-col porfolio)
+
+## Chú ý
+
+- Cần phải set header và footer không đổi
+- Xem các page có điểm gì chung để lập trình có tính thừa kế
+- Page parent: component common (sitemesh decorator), page child: inherit
+
+## Thực hành
+
+- Thêm thư viện sitemesh vào file maven
