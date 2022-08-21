@@ -12,6 +12,7 @@
     <servlet.api.version>3.1.0</servlet.api.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <sitemesh.version>2.4.2</sitemesh.version>
   </properties>
   <dependencies>
     <dependency>
@@ -42,6 +43,14 @@
         <artifactId>jstl</artifactId>
         <version>1.2</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/opensymphony/sitemesh -->
+    <dependency>
+        <groupId>opensymphony</groupId>
+        <artifactId>sitemesh</artifactId>
+        <version>${sitemesh.version}</version>
+    </dependency>
+
 
 
 
