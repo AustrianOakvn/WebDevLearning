@@ -2,14 +2,14 @@
 
 ## Dependencies
 
-- Java 1.8 
+- Java 1.8
 - Jsp-api 2.0
 - Servlet-api 3.0.1
 - Jstl 1.2
+- sitemesh 2.4.2
 
 ## License
 
 See LICENSE
 
 ## Acknowledgement
-

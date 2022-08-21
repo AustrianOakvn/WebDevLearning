@@ -3,6 +3,7 @@
 ## Sitemesh decorator
 
 Phân chia giao diện
+Nhìn xem trong website có những thành phần nào dùng lại
 
 ## Ví dụ trang VNExpress
 
@@ -21,7 +22,44 @@ Trang danh sách tất cả các bài viết:
 - Cần phải set header và footer không đổi
 - Xem các page có điểm gì chung để lập trình có tính thừa kế
 - Page parent: component common (sitemesh decorator), page child: inherit
+- Giao diện cho admin sử dụng admin ace
+- Những trang của admin thì url admin sẽ có tiền tố admin, vd: /admin-new-list, /admin-new-edit --> apply cái UI của admin
+- Những url của web, vd: /trang-chu, /dang-nhap, /chi-tiet-bai-viet --> sử dụng sitemesh phân tích url
+- Sitemesh phân tích (lọc) nếu url có chứa admin thì dùng UI admin, còn ngược lại dùng web, nếu là api thì không có giao diện
+- API: hàm để thực thi chức năng, url API bắt đầu bằng tiền tố: /api (không có giao diện)
 
 ## Thực hành
 
-- Thêm thư viện sitemesh vào file maven
+- B1: Thêm thư viện sitemesh vào file maven
+
+```xml
+<!-- https://mvnrepository.com/artifact/opensymphony/sitemesh -->
+    <dependency>
+        <groupId>opensymphony</groupId>
+        <artifactId>sitemesh</artifactId>
+        <version>${sitemesh.version}</version>
+    </dependency>
+```
+
+- B2: Tạo 1 file tên decorator.xml trong WEB-INF
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Folder decorator chứa admin.jsp -->
+<decorators defaultdir="/decorators">
+    <!-- URL trong tag excludes sẽ không có giao diện gì -->
+    <excludes>
+        <pattern>/api*</pattern>
+    </excludes>
+    <!-- admin.jsp là layout parent -->
+    <decorator name="admin" page="admin.jsp">
+        <pattern>/admin*</pattern>
+    </decorator>
+    <decorator name="web*" page="web.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+</decorators>
+```
+
+- B3: Tạo 1 folder trong webapp tên là decorators
+- B3: Tạo 1 filter trong file web.xml
