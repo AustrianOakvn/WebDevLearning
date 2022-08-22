@@ -1,4 +1,4 @@
-# B3
+# B3 Bootstrap + Jquery
 
 ## Bootstrap (html + css)
 

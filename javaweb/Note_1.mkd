@@ -1,4 +1,4 @@
-# Tạo project theo mô hình MVC (model - view - controller)
+# B1 Tạo project theo mô hình MVC (model - view - controller)
 
 ## Config web.xml
 
