@@ -5,9 +5,12 @@ pageEncoding="UTF-8"%> <%@include file="/common/taglib.jsp"%>
 <html>
   <head>
     <meta charset="UTF-8" />
+    <!-- jstl nếu không có title thì lấy title này default -->
     <title><dec:title default="Trang chủ" /></title>
 
     <!-- css -->
+    <!-- Sử dụng jstl c:url -->
+    <!-- Import các thư viện từ template -->
     <link
       href="<c:url value='/template/web/bootstrap/css/bootstrap.min.css' />"
       rel="stylesheet"
