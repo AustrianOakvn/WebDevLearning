@@ -64,7 +64,7 @@ Trang danh sách tất cả các bài viết:
 </decorators>
 ```
 
-- B3: Tạo 1 folder trong webapp tên là decorators
+- B3: Tạo 1 folder trong webapp tên là decorators. Folder này sẽ định nghĩa ra các trang dùng chung các thành phần được lấy từ common.
 - B4: Trong folder decorators, tạo 2 file là admin.jsp và web.jsp
 - B5: Thêm thư viện sitemesh chung vào taglib.jsp
 
@@ -73,6 +73,7 @@ Trang danh sách tất cả các bài viết:
 ```
 
 - B6: Trong common tạo 2 folder: admin, web. Trong web, tạo header.jsp, footer.jsp. Trong admin làm tương tự nhưng thêm menu.jsp.
-- B7: Trong webapp tạo folder template chứa các file css, js dùng chung. Vẫn cần chia thành folder admin và web.
+- B7: Trong webapp tạo folder template chứa các file css, js dùng chung. Vẫn cần chia thành folder admin và web. Tải các thư viện js, css về và đưa vào 2 folder này.
+- B8: Trong webapp/template/web tạo thêm một folder css để dùng các style css chung ngoài các css của bootstrap ra.
 
-- B4: Tạo 1 filter trong file web.xml
+- B: Tạo 1 filter trong file web.xml
