@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mpec.javaweb.model.UserModel;
+// import com.mpec.javaweb.model.UserModel;
 
 @WebServlet(urlPatterns = {"/trang-chu"})
 public class HomeController extends HttpServlet {
@@ -17,9 +17,9 @@ public class HomeController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // TODO Auto-generated method stub
         // super.doGet(req, resp);
-        UserModel userModel = new UserModel();
-        userModel.setFullName("Hello World");
-        req.setAttribute("model", userModel);
+        // UserModel userModel = new UserModel();
+        // userModel.setFullName("Hello World");
+        // req.setAttribute("model", userModel);
         RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
         rd.forward(req, resp);
     }
