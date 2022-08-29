@@ -1,0 +1,67 @@
+# B5: Thiết kế Database với mysql
+
+## Các mối quan hệ
+
+One to one, one to many, many to many
+Ví dụ: Một cuốn sách có nhiều tác giả, một tác giả có thể viết nhiều cuốn sách.
+Book n-n author
+Khi thiết kế many to many thì ở giữa sẽ có thêm một bảng trung gian. Ví dụ trên sẽ có bảng author_book trung gian và mối quan hệ sẽ trở thành
+
+Book 1-n (author_book) n-1 author.
+
+## Mysql
+
+### Terminal command
+
+```shell
+sudo systemctl (status/start/stop) mysql
+```
+
+### Mysql Workbench
+
+- Chuột phải --> Create Schema, Đặt tên, nhớ sử dụng Charset UTF-8 để lưu được tiếng việt.
+- Chọn Create new sql tab for executing query
+  
+```sql
+use newservlet12month2018
+-- Tạo bảng role có quan hệ 1 nhiều với user
+CREATE TABLE role(
+    -- Trong table luôn phải có khóa chính, bigint trong sql thì trong java là Long
+    id bigint NOT NULL PRIMARY KEY auto_increment,
+    -- Tên của vai trò, người dùng và quản trị
+    name VARCHAR(255) NOT NULL,
+    -- Code có kiểu String để dễ làm việc hơn, vd: Quản trị --> code: ADMIN, người dùng --> code: USER
+    code VARCHAR(255) NOT NULL,
+
+    createddate TIMESTAMP NULL,
+    modifieddate TIMESTAMP NULL,
+    createdby VARCHAR(255) NULL,
+    modifiedby VARCHAR(255) NULL
+
+);
+
+-- Tạo bảng user
+CREATE TABLE user (
+    id bigint NOT NULL PRIMARY KEY auto_increment,
+    username VARCHAR(150) NOT NULL,
+    password VARCHAR(150) NOT NULL,
+    fullname VARCHAR(150) NULL,
+    -- Khi xóa thì không xóa hẳn mà chỉ để trạng thái, khi status=1 là vẫn còn trong cty, status=0 là không còn trong cty
+    status int NOT NULL,
+    -- Khóa ngoại
+    roleid bigint NOT NULL,
+    createddate TIMESTAMP NULL,
+    modifieddate TIMESTAMP NULL,
+    createdby VARCHAR(255) NULL,
+    modifiedby VARCHAR(255) NULL
+
+);
+-- Map khóa chính ở role với khóa ngoại ở user
+ALTER TABLE user ADD CONSTRAINT fk_user_role FOREIGN KEY (roleid) REFERENCES role(id);
+```
+
+## Với bài toán
+
+- Cần các bảng role, admin, user
+- Mối quan hệ role 1-n user
+- createddate, modifieddate, createdby và modifiedby là 4 trường sẽ giúp rất nhiều cho việc thống kê. Ví dụ muốn thống kê bài viết của một người nào đó thì chỉ cần lọc thuộc tính createdby.
