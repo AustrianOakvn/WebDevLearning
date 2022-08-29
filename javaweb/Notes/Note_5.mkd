@@ -58,10 +58,65 @@ CREATE TABLE user (
 );
 -- Map khóa chính ở role với khóa ngoại ở user
 ALTER TABLE user ADD CONSTRAINT fk_user_role FOREIGN KEY (roleid) REFERENCES role(id);
+
+-- Tạo bảng bài viết
+CREATE TABLE news (
+    id bigint NOT NULL PRIMARY KEY auto_increment,
+    title VARCHAR(255) NULL,
+    thumbnail VARCHAR(255) NULL,
+    shortdescription TEXT NULL,
+    content TEXT NULL,
+    categoryid bigint NOT NULL,
+    
+
+    createddate TIMESTAMP NULL,
+    modifieddate TIMESTAMP NULL,
+    createdby VARCHAR(255) NULL,
+    modifiedby VARCHAR(255) NULL
+
+);
+
+-- Tạo bảng category
+CREATE TABLE category(
+
+    id bigint NOT NULL PRIMARY KEY auto_increment,
+    name VARCHAR(255) NOT NULL,
+    code VARCHAR(255) NOT NULL,
+
+    createddate TIMESTAMP NULL,
+    modifieddate TIMESTAMP NULL,
+    createdby VARCHAR(255) NULL,
+    modifiedby VARCHAR(255) NULL
+
+);
+
+ALTER TABLE news ADD CONSTRAINT fk_news_category FOREIGN KEY (categoryid) REFERENCES category(id);
+
+
+-- Tạo bảng comment
+CREATE TABLE comment(
+
+    id bigint NOT NULL PRIMARY KEY auto_increment,
+    content TEXT NOT NULL,
+    user_id bigint NOT NULL,
+    news_id bigint NOT NULL,
+
+
+    createddate TIMESTAMP NULL,
+    modifieddate TIMESTAMP NULL,
+    createdby VARCHAR(255) NULL,
+    modifiedby VARCHAR(255) NULL
+
+);
+
+ALTER TABLE comment ADD CONSTRAINT fk_comment_user FOREIGN KEY (userid) REFERENCES user(id);
+ALTER TABLE comment ADD CONSTRAINT fk_comment_news FOREIGN KEY (newsid) REFERENCES news(id);
 ```
 
 ## Với bài toán
 
 - Cần các bảng role, admin, user
 - Mối quan hệ role 1-n user
+- Mối quan hệ user n-n news (Chú ý khi implement thêm bảng user_news Nhưng ta sẽ gọi bảng user_news là bảng comment). user 1-n comment, news 1-n comment
 - createddate, modifieddate, createdby và modifiedby là 4 trường sẽ giúp rất nhiều cho việc thống kê. Ví dụ muốn thống kê bài viết của một người nào đó thì chỉ cần lọc thuộc tính createdby.
+- Note: Khái niệm về Java Beans là class Java có chứa getter và setter.
