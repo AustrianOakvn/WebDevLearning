@@ -1,6 +1,6 @@
 package com.mpec.javaweb.model;
 
-public class CommentModel {
+public class CommentModel extends AbstractModel{
 
     private String content;
     private Long userId;
