@@ -1,6 +1,6 @@
 package com.mpec.javaweb.model;
 
-public class CategoryModel {
+public class CategoryModel extends AbstractModel{
 
     private String name;
     private String code;

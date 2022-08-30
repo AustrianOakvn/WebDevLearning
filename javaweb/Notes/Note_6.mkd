@@ -1,0 +1,52 @@
+# B6: Xây dựng tầng SERVICE và DAO
+
+## Web architecture
+
+Presentation layer <--> Business logic <--> Data access layer <--> Database \
+
+Để có thể thực hiện thêm, sửa xóa trong database ta sẽ cần thực hiện các câu lệnh SQL vd: INSERT, DELETE, UPDATE, SELECT. Tầng data access layer sẽ chịu trách nhiệm thao tác với database. Business logic sẽ nhận dữ liệu từ tầng data access layer và xử lý dữ liệu về mặt logic. Tầng presentation thực thi theo MVC. \
+
+Khi làm việc với jdbc sẽ bị lặp đi lặp lại các công việc như kết nối csdl, câu lệnh sql thêm sửa xóa.
+
+## Tạo Business layer
+
+- B1: Tạo folder service
+
+## Tạo Data access layer
+
+- B1: Tạo folder DAO (data access object). Khi ta muồn kết nối với csdl thì cần 1 lớp để kết nối và ta chọn DAO design pattern.
+- B2: Tạo interface và implementation (giải thích: nguyên tắc dependency inversion principle, giảm sự phụ thuộc của tầng trên và tầng dưới vd tầng presentation và business, tầng presentation sẽ sử dụng các thành phần trong layer business và muốn giảm sự phụ thuộc khi thay đổi code thì cần áp dụng DIP).
+- B3: Khai báo driver mysql trong file pom.xml. Kiểm tra phiên bản mysql
+
+```shell
+mysql -V
+```
+
+- B4: Tạo interface ICategoryDAO và class CategoryDAO. Trong ICategoryDAO ta có findAll để lấy tất cả dữ liệu lên.
+- B5: Kết nối mysql thông qua driver jdbc. Chú ý khi sử dụng connection xong phải đóng nó lại. Khi có tác vụ mới thì mở lại. Multicatch exception. Trong jdbc có 2 kiểu đầu vào để thực thi câu lệnh sql trong java là Statement và PreparedStatement. Khi sử dụng Statement thì không sử dụng được tham số, nên sử dụng PreparedStatement
+
+```java
+public Connection getConnection(){
+    try{
+        Class.forName("com.mysql.jdbc.Driver");
+        // String url = "jdbc:mysql://hostname:port/dbname";
+        String url = "jdbc:mysql://localhost:3306/newservlet12month2018";
+        String user = "root";
+        String password = "7";
+        return DriverManager.getConnection(url, user, password);
+
+    }catch (ClassNotFoundException | SQLException e){
+        return null;
+    }
+}
+```
+
+Khi thực hiện câu lệnh statement xong thì đối tượng trả về không phải kiểu dữ liệu ta muốn mà nó là ResultSet. ResultSet tượng trưng cho table, ta sẽ sử dụng vòng lặp để lấy dữ liệu từ table ra.
+
+- B6: Lấy dữ liệu từ ResultSet sử dụng vòng lặp và chú ý khi lấy thuộc tính của đối tượng cần sử dụng tên thay vì là index. Sử dụng xong connection nhớ close. Sẽ sảy ra trường hợp nếu khi ta mở connection nhưng bị lỗi thì các connection có khả năng vẫn bị mở nên ta cần sử dụng finally.
+
+```java
+category.setId(resultSet.getLong("id"));
+```
+
+- B7: Sử dụng java weld servlet
