@@ -1,3 +1,14 @@
 /mnt/30A83E93A83E5794/Projects/JavaDev/Java_learning/javaweb/src/main/java/com/mpec/javaweb/controller/admin/HomeController.java
 /mnt/30A83E93A83E5794/Projects/JavaDev/Java_learning/javaweb/src/main/java/com/mpec/javaweb/controller/web/HomeController.java
+/mnt/30A83E93A83E5794/Projects/JavaDev/Java_learning/javaweb/src/main/java/com/mpec/javaweb/model/AbstractModel.java
+/mnt/30A83E93A83E5794/Projects/JavaDev/Java_learning/javaweb/src/main/java/com/mpec/javaweb/service/impl/CategoryService.java
+/mnt/30A83E93A83E5794/Projects/JavaDev/Java_learning/javaweb/src/main/java/com/mpec/javaweb/service/ICategoryService.java
+/mnt/30A83E93A83E5794/Projects/JavaDev/Java_learning/javaweb/src/main/java/com/mpec/javaweb/model/NewsModel.java
+/mnt/30A83E93A83E5794/Projects/JavaDev/Java_learning/javaweb/src/main/java/com/mpec/javaweb/model/CommentModel.java
+/mnt/30A83E93A83E5794/Projects/JavaDev/Java_learning/javaweb/src/main/java/com/mpec/javaweb/model/RoleModel.java
+/mnt/30A83E93A83E5794/Projects/JavaDev/Java_learning/javaweb/src/main/java/com/mpec/javaweb/service/impl/NewService.java
+/mnt/30A83E93A83E5794/Projects/JavaDev/Java_learning/javaweb/src/main/java/com/mpec/javaweb/dao/ICategoryDAO.java
+/mnt/30A83E93A83E5794/Projects/JavaDev/Java_learning/javaweb/src/main/java/com/mpec/javaweb/dao/impl/CategoryDAO.java
+/mnt/30A83E93A83E5794/Projects/JavaDev/Java_learning/javaweb/src/main/java/com/mpec/javaweb/model/CategoryModel.java
 /mnt/30A83E93A83E5794/Projects/JavaDev/Java_learning/javaweb/src/main/java/com/mpec/javaweb/model/UserModel.java
+/mnt/30A83E93A83E5794/Projects/JavaDev/Java_learning/javaweb/src/main/java/com/mpec/javaweb/service/INewService.java

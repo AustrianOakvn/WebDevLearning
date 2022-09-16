@@ -1,6 +1,6 @@
 package com.mpec.javaweb.model;
 
-public class NewsModel {
+public class NewsModel extends AbstractModel{
 
     private String title;
     private String thumbNail;
