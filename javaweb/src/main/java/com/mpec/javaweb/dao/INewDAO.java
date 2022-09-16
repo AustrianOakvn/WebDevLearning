@@ -1,12 +1,10 @@
-package com.mpec.javaweb.service;
+package com.mpec.javaweb.dao;
 
 import com.mpec.javaweb.model.NewsModel;
 
 import java.util.List;
 
-public interface INewService {
+public interface INewDAO {
 
     List<NewsModel> findByCategoryId(Long categoryId);
-    
-    
 }

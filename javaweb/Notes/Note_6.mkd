@@ -2,9 +2,9 @@
 
 ## Web architecture
 
-Presentation layer <--> Business logic <--> Data access layer <--> Database \
+Presentation layer <--> Business logic <--> Data access layer <--> Database 
 
-Để có thể thực hiện thêm, sửa xóa trong database ta sẽ cần thực hiện các câu lệnh SQL vd: INSERT, DELETE, UPDATE, SELECT. Tầng data access layer sẽ chịu trách nhiệm thao tác với database. Business logic sẽ nhận dữ liệu từ tầng data access layer và xử lý dữ liệu về mặt logic. Tầng presentation thực thi theo MVC. \
+Để có thể thực hiện thêm, sửa xóa trong database ta sẽ cần thực hiện các câu lệnh SQL vd: INSERT, DELETE, UPDATE, SELECT. Tầng data access layer sẽ chịu trách nhiệm thao tác với database. Business logic sẽ nhận dữ liệu từ tầng data access layer và xử lý dữ liệu về mặt logic. Tầng presentation thực thi theo MVC. 
 
 Khi làm việc với jdbc sẽ bị lặp đi lặp lại các công việc như kết nối csdl, câu lệnh sql thêm sửa xóa.
 
@@ -49,4 +49,17 @@ Khi thực hiện câu lệnh statement xong thì đối tượng trả về kh�
 category.setId(resultSet.getLong("id"));
 ```
 
-- B7: Sử dụng java weld servlet
+- B7: Để không cần lặp đi lặp lại khi implement Service, tạo DAO thì có thể sử dụng @Inject. Nó sẽ tự động khởi tạo giúp ta. Chú ý cần thêm listener vào web.xml
+
+```java
+@Inject
+    private ICategoryDAO categoryDao;
+```
+
+```xml
+<listener>
+    <listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
+</listener>
+```
+
+- B8: Xây dựng DAO và service cho News. Chú ý: DAO nào thì chỉ làm việc trên bảng của nó, không sử dụng lẫn lộn sẽ vi phạm SOLID
