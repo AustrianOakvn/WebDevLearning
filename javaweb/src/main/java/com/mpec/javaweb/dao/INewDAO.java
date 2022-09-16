@@ -4,7 +4,7 @@ import com.mpec.javaweb.model.NewsModel;
 
 import java.util.List;
 
-public interface INewDAO {
+public interface INewDAO extends GenericDAO<NewsModel>{
 
     List<NewsModel> findByCategoryId(Long categoryId);
 }
