@@ -17,7 +17,7 @@ Chú ý:
 B1: Trong package dao, tạo interface GenericDAO, trong dao.impl
 tạo AbstractDAO implement GenericDAO. \
 B2: Các interface trong dao sẽ extend từ GenericDAO và các class trong impl sẽ extends 
-từ AbstractDAO.
+từ AbstractDAO. \
 B3: Tạo package mapper sẽ chứa các 1 interface để map các hàng trong resultset vào model, và
-các class implement lại interface đó với từng kiểu model.
+các class implement lại interface đó với từng kiểu model. \
 B4: Sau khi đã viết xong cách query dữ liệu thì có thể bỏ các phần code thừa (connection, thực hiện query của các class trong imlp)
