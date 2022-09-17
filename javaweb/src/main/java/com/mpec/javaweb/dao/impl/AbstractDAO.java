@@ -32,6 +32,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
     public <T> List<T> query(String sql, RowMapper<T> rowMapper, Object... parameters) {
         List<T> result = new ArrayList<>();
         Connection connection = null;
+        // PreparedStatement cho phép truyền tham số trực tiếp còn Statement thì không
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try{
@@ -64,6 +65,86 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         }
     }
 
+    @Override
+    public void update(String sql, Object... parameters) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try{
+            connection = getConnection();
+            connection.setAutoCommit(false);
+            statement = connection.prepareStatement(sql);
+            setParameter(statement, parameters);
+            statement.executeUpdate();
+            connection.commit();
+        }catch(SQLException e){
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            throw new RuntimeException(e);
+        }finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public Long insert(String sql, Object... parameters) {
+        ResultSet resultSet = null;
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try{
+            Long id = null;
+            connection = getConnection();
+            connection.setAutoCommit(false);
+            statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            setParameter(statement, parameters);
+            statement.executeUpdate();
+            resultSet = statement.getGeneratedKeys();
+            if(resultSet.next()){
+                id = resultSet.getLong(1);
+            }
+            connection.commit();
+            return id;
+        }catch(SQLException e){
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException ex) {
+                    return null;
+                }
+            }
+            return null;
+        }finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (resultSet != null){
+                    resultSet.close();
+                }
+
+            } catch (SQLException e) {
+                return null;
+            }
+        }
+    }
+
     // Hàm sử dụng để set parameter vào câu truy vấn sql
     private void setParameter(PreparedStatement statement, Object ...parameters) throws SQLException {
         try {
@@ -74,8 +155,15 @@ public class AbstractDAO<T> implements GenericDAO<T> {
                 // Do ta không biết kiểu dữ liệu của parameter nên phải xét sử dụng instance of
                 if (parameter instanceof Long) {
                     statement.setLong(index, (Long) parameter);
+                    // Xét kiểu String
                 } else if (parameter instanceof String){
                     statement.setString(index, (String)parameter);
+                    // Xét kiểu integer
+                } else if (parameter instanceof Integer){
+                    statement.setInt(index, (Integer) parameter);
+                    // Xét kiểu thời gian ngày tháng năm
+                } else if (parameter instanceof Timestamp){
+                    statement.setTimestamp(index, (Timestamp) parameter);
                 }
             }
         }catch (SQLException e){

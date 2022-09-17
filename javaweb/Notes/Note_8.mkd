@@ -1,0 +1,9 @@
+# B8: JDBC Nâng cao: Thêm sửa xóa
+
+Transaction: Khi thao tác thì jdbc cấp cho 1 transaction, cùng 1 lúc có  thao tác thêm, sửa, xóa.
+Ban đầu nó sẽ thực hiện open transaction --> query --> close transaction. Khác với thao tác lấy dữ
+liệu lên thì bởi vì ta đang đang tác động đến database. Nếu tất cả các thao tác trong một transaction 
+thành công thì ta sẽ commit các thay đổi (chỉ execute thôi thì nó chưa thay đổi database, bắt buộc phải
+commit). Tuy nhiên không phải tất cả các thao tác có thể thực hiện thành công, dẫn đến sử dụng roll back.
+Roll back sẽ revert lại tất cả các thay đổi trong transaction. Nên setAutoCommmit(false) và thực hiện
+commit thủ công.
