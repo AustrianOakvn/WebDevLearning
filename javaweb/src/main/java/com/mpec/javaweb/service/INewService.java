@@ -8,6 +8,10 @@ public interface INewService {
 
     List<NewsModel> findByCategoryId(Long categoryId);
     NewsModel save(NewsModel newModel);
+    NewsModel update(NewsModel updateModel);
+
+    void delete(long[] ids);
+    List<NewsModel> findAll();
     
     
 }

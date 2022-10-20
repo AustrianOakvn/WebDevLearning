@@ -2,6 +2,7 @@
 pageEncoding="UTF-8"%> 
 <%@include file="/common/taglib.jsp"%>
 
+<%--Decorator của admin sẽ bao gồm các thành phần chung mà được định nghĩa trong common như header, footer, menu--%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -41,6 +42,7 @@ pageEncoding="UTF-8"%>
       href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
     />
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<%--    Thêm thư viện paging của jquery--%>
     <script src="<c:url value='/template/paging/jquery.twbsPagination.js' />"></script>
 
     <script src="<c:url value='/ckeditor/ckeditor.js' />"></script>
@@ -75,6 +77,7 @@ pageEncoding="UTF-8"%>
       </a>
     </div>
 
+<%--Đặt javascript xuống cuối để load nhanh hơn--%>
     <script src="<c:url value='/template/admin/assets/js/bootstrap.min.js' />"></script>
     <script src="<c:url value='/template/admin/assets/js/jquery-ui.custom.min.js' />"></script>
     <script src="<c:url value='/template/admin/assets/js/jquery.ui.touch-punch.min.js' />"></script>

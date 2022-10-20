@@ -4,6 +4,7 @@
         <pattern>/api*</pattern>
     </excludes>
 
+<!--    Lọc các url pattern nếu thuộc admin thì sẽ được áp dụng decorator của admin và ngược lại-->
     <decorator name="admin" page="admin.jsp">
         <pattern>/admin*</pattern>
     </decorator>

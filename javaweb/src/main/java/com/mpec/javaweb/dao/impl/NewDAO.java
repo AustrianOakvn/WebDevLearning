@@ -16,9 +16,49 @@ public class NewDAO extends AbstractDAO<NewsModel> implements INewDAO {
     }
 
     @Override
+    public NewsModel findOne(Long id) {
+        String sql = "SELECT * FROM news WHERE id=?";
+//        Do query luôn trả về một list nên cần sử dụng truy vấn như dưới
+        List<NewsModel> news = query(sql, new NewMapper(), id);
+//        Do list chỉ có 1 phần tử nên kiểm tra nếu nó rỗng thì trả về null còn không thì trả về phần tử đầu tiên
+        return news.isEmpty() ? null:news.get(0);
+    }
+
+
+    @Override
     public Long save(NewsModel newModel) {
-        String sql = "INSERT INTO news (title, content, categoryid) VALUES (?, ?, ?)";
-        return insert(sql, newModel.getTitle(), newModel.getContent(), newModel.getCategoryId());
+//        String sql = "INSERT INTO news (title, content, categoryid) VALUES (?, ?, ?)";
+        StringBuilder sql = new StringBuilder("INSERT INTO news");
+        sql.append("(title, content, thumbnail, shortdescription, categoryid, createddate, createdby)");
+        sql.append("VALUES(?, ?, ?, ?, ?, ?, ?)");
+        return insert(sql.toString(), newModel.getTitle(), newModel.getContent(),
+                                        newModel.getThumbNail(), newModel.getShortDescription(),
+                                        newModel.getCategoryId(), newModel.getCreatedDate(),
+                                        newModel.getCreatedBy());
+    }
+
+    @Override
+    public void update(NewsModel updateNew) {
+//        StringBuilder là class để tạo ra chuỗi có thể thay đổi (mutable)
+        StringBuilder sql = new StringBuilder("UPDATE news SET title=?, thumbnail=?");
+        sql.append("shortdescription=?, content=?, categoryid=?");
+        sql.append("createddate=?, createdBy=?, modifieddate=?, modifiedby=? WHERE id=?");
+        update(sql.toString(), updateNew.getTitle(), updateNew.getThumbNail(), updateNew.getShortDescription(),
+                updateNew.getContent(), updateNew.getCategoryId(), updateNew.getCreatedDate(),
+                updateNew.getCreatedBy(), updateNew.getModifiedDate(),
+                updateNew.getModifiedBy(), updateNew.getId());
+    }
+
+    @Override
+    public void delete(long id) {
+        String sql = "DELETE FROM news WHERE id=?";
+        update(sql, id);
+    }
+
+    @Override
+    public List<NewsModel> findAll() {
+        String sql = "SELECT * FROM news";
+        return query(sql, new NewMapper());
     }
 
     ///////////////////////////////////////////////////////

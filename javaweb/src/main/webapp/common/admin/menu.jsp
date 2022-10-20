@@ -44,7 +44,8 @@
             <b class="arrow"></b>
             <ul class="submenu">
                 <li>
-                    <a href="#">
+<%--                    Truy cập đến admin-new và gọi NewController.--%>
+                    <a href='<c:url value="/admin-new"/>'>
                         <i class="menu-icon fa fa-caret-right"></i>
                         DS bài viết
                     </a>

@@ -2,6 +2,7 @@
 pageEncoding="UTF-8"%> 
 <%@include file="/common/taglib.jsp"%>
 
+<%--Decorator của admin sẽ bao gồm các thành phần chung mà được định nghĩa trong common như header, footer, menu--%>
 <!DOCTYPE html>
 <html>
   <head>

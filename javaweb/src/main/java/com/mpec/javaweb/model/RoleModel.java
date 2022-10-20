@@ -2,7 +2,7 @@ package com.mpec.javaweb.model;
 
 // import java.sql.Timestamp;
 
-public class RoleModel extends AbstractModel{
+public class RoleModel extends AbstractModel<RoleModel>{
 
     private String name;
     private String code;

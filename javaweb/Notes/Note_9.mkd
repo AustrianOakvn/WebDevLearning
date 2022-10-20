@@ -1,0 +1,32 @@
+# B9: Phân trang
+
+## Nhiệm vụ: Hiển thị danh sách bài viết.
+Chú ý:
+- Sử dụng thẻ pagination để phân trang
+```html
+<ul class="pagination" id="pagination"></ul>
+```
+- Sử dụng hàm để thay đổi thông số
+```html
+<script type="text/javascript">
+      $(function () {
+        window.pagObj = $('#pagination').twbsPagination({
+          //  Tổng số trang
+          totalPages: 10,
+          //  Số trang có thể nhìn thấy
+          visiblePages: 5,
+          //  Trang bắt đầu
+          startPage: 1,
+          onPageClick: function (event, page) {
+            console.info(page + ' (from options)');
+          }
+        }).on('page', function (event, page) {
+          console.info(page + ' (from event listening)');
+        });
+      });
+</script>
+ ```
+- Controller luôn trả về một đối tượng là model Ví dụ:
+Quản lý bài viết - List<NewModel>
+Quản lý thể loại - List<CategoryModel>
+Quản lý bình luận - List<CommentModel>

@@ -3,7 +3,7 @@ package com.mpec.javaweb.model;
 // import java.sql.Timestamp;
 // import java.util.Properties;
 
-public class UserModel extends AbstractModel {
+public class UserModel extends AbstractModel<UserModel> {
 
     
     private String userName;

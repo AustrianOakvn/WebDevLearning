@@ -39,16 +39,16 @@ public class HomeController extends HttpServlet {
 //        req.setAttribute("news", newService.findByCategoryId(categoryId));
 
         // Kiểm tra lưu
-        String title = "Bài viết 4";
-        String content = "Nội dung bài viết 4";
-        Long categoryId = 1L;
-        NewsModel newModel = new NewsModel();
-        newModel.setTitle(title);
-        newModel.setContent(content);
-        newModel.setCategoryId(categoryId);
-        newService.save(newModel);
-
-        req.setAttribute("categories", categoryService.findAll());
+//        String title = "Bài viết 4";
+//        String content = "Nội dung bài viết 4";
+//        Long categoryId = 1L;
+//        NewsModel newModel = new NewsModel();
+//        newModel.setTitle(title);
+//        newModel.setContent(content);
+//        newModel.setCategoryId(categoryId);
+//        newService.save(newModel);
+//
+//        req.setAttribute("categories", categoryService.findAll());
         RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
         rd.forward(req, resp);
     }
